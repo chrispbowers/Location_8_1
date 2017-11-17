@@ -11,18 +11,22 @@
   <description>
      
   </description>
-
-    <preference name='phonegap-version' value='cli-7.0.1' />
  
     <plugin name="cordova-plugin-geolocation-android-activator" />
     <plugin name="cordova-plugin-geolocation"  />
 
+    <platform name="ios">
+        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+            <array>
+                <dict>
+                    <key>NSLocationWhenInUseUsageDescription</key>
+                    <string>need location access to find things nearby</string>
+                </dict>
+            </array>
+        </config-file>
+    </platform>
     
-    
-    <edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
-    <string>need location access to find things nearby</string>
-    </edit-config>
-    
+
     
     
 </widget>
