@@ -1,3 +1,7 @@
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+
 //when the jQuery Mobile page is initialised
 $(document).on('pageinit', function() {
 	
@@ -7,7 +11,9 @@ $(document).on('pageinit', function() {
 	//change time box to show message
 	$('#time').val("Press the button to get location data");
 	
-    
+});
+
+function onDeviceReady() {
     
     permissions.requestPermission(permissions.ACCESS_COARSE_LOCATION, function() {
         alert("Permission granted");
@@ -15,7 +21,9 @@ $(document).on('pageinit', function() {
         alert("Permission denied");
     });
     
-});
+}
+
+
 
 
 //Call this function when you want to get the current position
@@ -27,15 +35,7 @@ function getPosition() {
         
     });
    
-    permissions.requestPermission(permissions.ACCESS_COARSE_LOCATION, function() {
-        alert("Permission granted");
-    }, function() {
-        alert("Permission denied");
-    });
-
-    permissions.checkPermission(permissions.ACCESS_COARSE_LOCATION, function(status) {
-        alert(status.hasPermission)
-    });
+    
 	
 	//change time box to show updated message
 	$('#time').val("Getting data...");
