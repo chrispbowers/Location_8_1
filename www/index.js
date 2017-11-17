@@ -1,7 +1,3 @@
-
-document.addEventListener("deviceready", onDeviceReady, false);
-
-
 //when the jQuery Mobile page is initialised
 $(document).on('pageinit', function() {
 	
