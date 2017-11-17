@@ -13,4 +13,6 @@
   </description>
 
  
+<plugin name="cordova-plugin-geolocation"></plugin>
+    
 </widget>
