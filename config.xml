@@ -1,18 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<widget xmlns   = "http://www.w3.org/ns/widgets"
-    xmlns:gap   = "http://phonegap.com/ns/1.0"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    id          = "com.phonegap.location1"
-    versionCode = "1"
-    version     = "1.0.0" >
-
-  <name>Location Example</name>
-
-  <description>
-     
-  </description>
-
-   <content src="index.html" />
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="uk.co.workingedge.phonegap.plugins.example.diagnostic.android.runtime.example" version="0.0.1"
+        xmlns="http://www.w3.org/ns/widgets"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Cordova Diagnostic Plugin Android Runtime Example</name>
+    <description>
+        Demonstrates use of Cordova Diagnostic Plugin for requesting Android runtime permissions in Android 6.0/API 23 and above.
+    </description>
+    <author email="dave@workingedge.co.uk" href="http://www.workingedge.co.uk/dave">
+        Dave Alden
+    </author>
+    <content src="index.html" />
     <access origin="*" />
 
     <preference name="Fullscreen" value="false" />
@@ -35,6 +33,7 @@
             <uses-permission android:name="android.permission.READ_CALENDAR" />
             <!--
                 Omit this permission for demonstration purposes
+
                 <uses-permission android:name="android.permission.WRITE_CALENDAR" />
             -->
             <uses-permission android:name="android.permission.CAMERA" />
@@ -65,4 +64,5 @@
             <uses-permission android:name="android.permission.BODY_SENSORS" />
         </config-file>
     </platform>
+
 </widget>
