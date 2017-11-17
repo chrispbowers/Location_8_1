@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+    xmlns:gap   = "http://phonegap.com/ns/1.0"
+    id          = "com.phonegap.location1"
+    versionCode = "1"
+    version     = "1.0.0" >
+
+
+  <name>Location Example</name>
+
+  <description>
+     
+  </description>
+
+ 
+    <plugin name="cordova-plugin-geolocation" spec="~3.0.0" />
+</widget>
