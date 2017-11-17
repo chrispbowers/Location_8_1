@@ -2,6 +2,30 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
  
+    
+    
+}
+
+
+
+//when the jQuery Mobile page is initialised
+$(document).on('pageinit', function() {
+	
+    //set up listener for button click
+	$(document).on('click', getPermission);
+	
+	//change time box to show message
+	$('#time').val("Press the button to get location data");
+	
+    
+    
+    
+    
+    
+    
+});
+
+function getPermission() {
     cordova.plugins.diagnostic.requestRuntimePermissions(
         
         function(statuses){
@@ -32,29 +56,7 @@ function onDeviceReady() {
             cordova.plugins.diagnostic.permission.ACCESS_COARSE_LOCATION
         ]
     );
-    
 }
-
-
-
-//when the jQuery Mobile page is initialised
-$(document).on('pageinit', function() {
-	
-    //set up listener for button click
-	$(document).on('click', getPosition);
-	
-	//change time box to show message
-	$('#time').val("Press the button to get location data");
-	
-    
-    
-    
-    
-    
-    
-});
-
-
 
 
 
