@@ -1,3 +1,17 @@
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+    var permissions = cordova.plugins.permissions;
+    permissions.requestPermissions([ permissions.ACCESS_FINE_LOCATION, permissions.ACCESS_COURSE_LOCATION], function() {
+        console.log("Permissions granted");
+    }, function() {
+        console.log("Permissions Denied");
+    });
+    
+}
+
+
+
 //when the jQuery Mobile page is initialised
 $(document).on('pageinit', function() {
 	
@@ -7,6 +21,12 @@ $(document).on('pageinit', function() {
 	//change time box to show message
 	$('#time').val("Press the button to get location data");
 	
+    
+    
+    
+    
+    
+    
 });
 
 

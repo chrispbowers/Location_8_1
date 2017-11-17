@@ -14,27 +14,23 @@
 
     <preference name="phonegap-version" value="cli-7.0.1" />
  
-    <preference name="permissions" value="none"/>
     
-    
-    
-       <feature name="http://api.phonegap.com/1.0/device" />
-	
-	<feature name="http://api.phonegap.com/1.0/geolocation"/>
+   
     <plugin name="cordova-plugin-geolocation" />
 
     
     <access origin="*"/>
     <plugin name="cordova-plugin-whitelist"  />
+    <plugin name="cordova-plugin-android-permissions"  />
     
 
     
     <platform name="android">
-    <config-file target="AndroidManifest.xml" parent="/manifest">
-        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-        <uses-permission android:name="android.permission.ACCESS_COURSE_LOCATION" />
-    </config-file>
-</platform>
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+            <uses-permission android:name="android.permission.ACCESS_COURSE_LOCATION" />
+        </config-file>
+    </platform>
     
     
 </widget>
