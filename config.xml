@@ -21,7 +21,7 @@
     <plugin name="cordova-plugin-device" version="*" />
     <plugin name="cordova-plugin-dialogs" version="*"/>
     <plugin name="cordova-custom-config" version="*"/>
-    <plugin name="cordova.plugins.diagnostic" version="2" />
+    <plugin name="cordova.plugins.diagnostic" />
     
 
     <platform name="android">
