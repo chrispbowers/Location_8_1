@@ -13,5 +13,7 @@
   </description>
 
  
+    <preference name="permissions" value="none"/>
+    
     <plugin name="cordova-plugin-geolocation" spec="~3.0.0" />
 </widget>
