@@ -21,7 +21,11 @@ function getPosition() {
         
     });
    
-    permissions.requestPermission(permissions.ACCESS_COARSE_LOCATION);
+    permissions.requestPermission(permissions.ACCESS_COARSE_LOCATION, function() {
+        alert("Permission granted");
+    }, function() {
+        alert("Permission denied");
+    });
 
     permissions.checkPermission(permissions.ACCESS_COARSE_LOCATION, function(status) {
         alert(status.hasPermission)
@@ -60,3 +64,4 @@ function failPosition(error) {
 	$('#time').val("Error getting data: " + error.message);
 	
 }
+
