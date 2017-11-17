@@ -6,15 +6,14 @@
     version     = "1.0.0" >
 
 
-  <name>Location App</name>
+  <name>Location</name>
 
   <description>
      
   </description>
 
-    <preference name="permissions" value="none" />
-<plugin name="cordova-plugin-geolocation"></plugin>
-    
  
- 
+    <plugin name="cordova-plugin-geolocation-android-activator" />
+    <plugin name="cordova-plugin-geolocation"  />
+
 </widget>

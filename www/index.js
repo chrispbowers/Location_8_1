@@ -41,6 +41,6 @@ function successPosition(position) {
 //called if the position is not obtained correctly
 function failPosition(error) {
 	//change time box to show updated message
-	$('#time').val("Error getting data: " + error.message);
+	$('#time').val("Error getting data: " + error);
 	
 }
