@@ -16,7 +16,9 @@
     <preference name="permissions" value="none"/>
     
     <plugin name="cordova-plugin-geolocation" />
+    <feature name="http://api.phonegap.com/1.0/geolocation"/>
     
     <access origin="*"/>
     <plugin name="cordova-plugin-whitelist"  />
+    
 </widget>
