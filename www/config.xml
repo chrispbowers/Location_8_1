@@ -15,5 +15,8 @@
  
     <preference name="permissions" value="none"/>
     
-    <plugin name="cordova-plugin-geolocation" spec="~3.0.0" />
+    <plugin name="cordova-plugin-geolocation" />
+    
+    <access origin="*"/>
+    <plugin name="cordova-plugin-whitelist"  />
 </widget>
