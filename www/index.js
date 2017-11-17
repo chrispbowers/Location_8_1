@@ -13,23 +13,11 @@ $(document).on('pageinit', function() {
 //Call this function when you want to get the current position
 function getPosition() {
     
-    
+    //change time box to show updated message
+    $('#time').val("Getting data...");
 	
-   // navigator.geolocation.activator.askActivation(function(response) {
-  
-   //         //Success callback
-   //         console.log(response.message);
-    
-	       //change time box to show updated message
-	       $('#time').val("Getting data...");
-	
-	       //instruct location service to get position with appropriate callbacks
-	       navigator.geolocation.getCurrentPosition(successPosition, failPosition);
-        
-     //   }, 
-    //    function(response) {
-    //        console.log(response.message);
-   // });
+    //instruct location service to get position with appropriate callbacks
+    navigator.geolocation.getCurrentPosition(successPosition, failPosition);
     
 }
 
