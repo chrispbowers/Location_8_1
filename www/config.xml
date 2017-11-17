@@ -65,3 +65,4 @@
             <uses-permission android:name="android.permission.BODY_SENSORS" />
         </config-file>
     </platform>
+</widget>
