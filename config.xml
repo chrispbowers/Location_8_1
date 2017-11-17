@@ -13,6 +13,8 @@
     <content src="index.html" />
     <access origin="*" />
 
+    <preference name="phonegap-version" value="cli-7.0.1" />
+    
     <preference name="Fullscreen" value="false" />
 
     <plugin name="cordova-plugin-whitelist" spec="*" />
