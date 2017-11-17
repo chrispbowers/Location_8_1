@@ -13,7 +13,7 @@
   </description>
 
  
-    <plugin name="cordova-plugin-geolocation-android-activator" />
+   <!-- <plugin name="cordova-plugin-geolocation-android-activator" />-->
     <plugin name="cordova-plugin-geolocation"  />
 
 </widget>
