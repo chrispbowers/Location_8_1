@@ -15,26 +15,11 @@
     <plugin name="cordova-plugin-geolocation-android-activator" />
     <plugin name="cordova-plugin-geolocation"  />
 
-    <platform name="android"></platform>
-        
-    <platform name="ios">
-        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
-            <array>
-                <dict>
-                    <key>NSLocationAlwaysUsageDescription</key>
-                    <string>Program requires GPS to track cars and job orders</string>
-                    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-                    <string>Program requires GPS to track cars and job orders</string>
-                    <key>NSLocationWhenInUseUsageDescription</key>
-                    <string>Program requires GPS to track cars and job orders</string>
-                    <key>NSMicrophoneUsageDescription</key>
-                    <string>This app uses your Microphone to allow Voice over IP communication with the Program Admin system</string>
-                </dict>
-            </array>
-        </config-file>
-    </platform>
+  
     
-
+ <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
+    <string>need location access to find things nearby</string>
+ </edit-config>
     
     
 </widget>
