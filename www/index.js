@@ -8,6 +8,15 @@ $(document).on('pageinit', function() {
 	$('#time').val("Press the button to get location data");
 	
     
+    
+    });
+    
+});
+
+
+//Call this function when you want to get the current position
+function getPosition() {
+    
     var permissions = cordova.plugins.permissions;
     permissions.checkPermission(permissions.ACCESS_COARSE_LOCATION, function(status) {
         alert(status.hasPermission)
@@ -19,13 +28,6 @@ $(document).on('pageinit', function() {
     permissions.checkPermission(permissions.ACCESS_COARSE_LOCATION, function(status) {
         alert(status.hasPermission)
         
-    });
-    
-});
-
-
-//Call this function when you want to get the current position
-function getPosition() {
 	
 	//change time box to show updated message
 	$('#time').val("Getting data...");
