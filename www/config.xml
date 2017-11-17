@@ -21,4 +21,6 @@
     <access origin="*"/>
     <plugin name="cordova-plugin-whitelist"  />
     
+    <plugin name="cordova-plugin-android-permissions"></plugin>
+    
 </widget>

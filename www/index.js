@@ -1,12 +1,26 @@
 //when the jQuery Mobile page is initialised
 $(document).on('pageinit', function() {
 	
-	//set up listener for button click
+    //set up listener for button click
 	$(document).on('click', getPosition);
 	
 	//change time box to show message
 	$('#time').val("Press the button to get location data");
 	
+    
+    var permissions = cordova.plugins.permissions;
+    permissions.checkPermission(permissions.ACCESS_COARSE_LOCATION, function(status) {
+        alert(status.hasPermission)
+        
+    });
+   
+    permissions.requestPermission(permissions.ACCESS_COARSE_LOCATION);
+
+    permissions.checkPermission(permissions.ACCESS_COARSE_LOCATION, function(status) {
+        alert(status.hasPermission)
+        
+    });
+    
 });
 
 
