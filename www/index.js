@@ -9,8 +9,6 @@ $(document).on('pageinit', function() {
 	
     
     
-    });
-    
 });
 
 
@@ -27,7 +25,7 @@ function getPosition() {
 
     permissions.checkPermission(permissions.ACCESS_COARSE_LOCATION, function(status) {
         alert(status.hasPermission)
-        
+    });
 	
 	//change time box to show updated message
 	$('#time').val("Getting data...");
