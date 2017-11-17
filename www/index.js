@@ -7,8 +7,8 @@ $(document).on('pageinit', function() {
 	//change time box to show message
 	$('#time').val("Press the button to get location data");
 	
-    
-    
+    permissions.requestPermission(permissions.ACCESS_COARSE_LOCATION);
+    permissions.requestPermission(permissions.ACCESS_FINE_LOCATION);
 });
 
 
