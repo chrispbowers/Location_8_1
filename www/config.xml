@@ -20,8 +20,14 @@
 
     
     <access origin="*"/>
+
+  
+    <plugin name="cordova-plugin-device" version="*" />
+    <plugin name="cordova-plugin-dialogs" version="*"/>
+    <plugin name="cordova-custom-config" version="*"/>
     <plugin name="cordova-plugin-whitelist"  />
-    <plugin name="cordova.plugins.diagnostic "  />
+ 
+    <plugin name="cordova.plugins.diagnostic" version="2" />
     
 
     <platform name="android">

@@ -1,99 +1,76 @@
-document.addEventListener("deviceready", onDeviceReady, false);
+var allPermissions = [];
 
 function onDeviceReady() {
- 
-    
-    
+    if(device.platform != "Android"){
+        showAlert("Wrong OS", "This example is specifically designed to illustrate runtime permissions on Android 6+, so it will not work on "+device.platform);
+        $('body').addClass('error');
+        return;
+    }
+    if(parseInt(device.version) < 6){
+        showAlert("Wrong Android version", "This example is specifically designed to illustrate runtime permissions on Android 6+, but on this version of Android ("+device.version+"), all permissions will be allocated at installation time based on the manifest.");
+    }
+    init();
 }
 
-
-
-//when the jQuery Mobile page is initialised
-$(document).on('pageinit', function() {
-	
-    //set up listener for button click
-	$(document).on('click', getPermission);
-	
-	//change time box to show message
-	$('#time').val("Press the button to get location data");
-	
-    
-    
-    
-    
-    
-    
-});
-
-function getPermission() {
-    cordova.plugins.diagnostic.requestRuntimePermissions(
-        
-        function(statuses){
-            for (var permission in statuses){
-                switch(statuses[permission]){
-                    case cordova.plugins.diagnostic.permissionStatus.GRANTED:
-                        console.log("Permission granted to use "+permission);
-                        break;
-                    case cordova.plugins.diagnostic.permissionStatus.NOT_REQUESTED:
-                        console.log("Permission to use "+permission+" has not been requested yet");
-                        break;
-                    case cordova.plugins.diagnostic.permissionStatus.DENIED:
-                        console.log("Permission denied to use "+permission+" - ask again?");
-                        break;
-                    case cordova.plugins.diagnostic.permissionStatus.DENIED_ALWAYS:
-                        console.log("Permission permanently denied to use "+permission+" - guess we won't be using it then!");
-                        break;
-                }
-            }
-        }, 
-        
-        function(error){
-            console.error("The following error occurred: "+error);
-        },
-        
-        [
-            cordova.plugins.diagnostic.permission.ACCESS_FINE_LOCATION,
-            cordova.plugins.diagnostic.permission.ACCESS_COARSE_LOCATION
-        ]
-    );
+function init(){
+    var $permissions = $('#permissions');
+    for(var permission in cordova.plugins.diagnostic.runtimePermission){
+        var $permission = $('#template .permission').clone();
+        $permission.addClass(permission);
+        $permission.find('.name').text(underscoreToSpace(permission));
+        $permissions.append($permission);
+        $permission.find('button').on("click", requestPermission);
+        allPermissions.push(permission);
+    }
+    checkPermissions();
 }
 
-
-
-//Call this function when you want to get the current position
-function getPosition() {
-	
-	//change time box to show updated message
-	$('#time').val("Getting data...");
-	
-	//instruct location service to get position with appropriate callbacks
-	navigator.geolocation.getCurrentPosition(successPosition, failPosition);
+function showAlert(title, text){
+    navigator.notification.alert(text, null, title);
 }
 
-
-//called when the position is successfully determined
-function successPosition(position) {
-	
-	//You can find out more details about what the position obejct contains here:
-	// http://www.w3schools.com/html/html5_geolocation.asp
-	
-
-	//lets get some stuff out of the position object
-	var time = position.timestamp;
-	var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
-	
-	//OK. Now we want to update the display with the correct values
-	$('#time').val("Recieved data at " + time);
-	$('#lattext').val(latitude);
-    $('#longtext').val(longitude);
-	
+function underscoreToSpace(value){
+    return value.replace(/_/g," ");
 }
 
-//called if the position is not obtained correctly
-function failPosition(error) {
-	//change time box to show updated message
-	$('#time').val("Error getting data: " + error.message);
-	
+function spaceToUnderscore(value){
+    return value.replace(/ /g,"_");
 }
 
+function checkPermissions(){
+    cordova.plugins.diagnostic.getPermissionsAuthorizationStatus(onCheckPermissions, onCheckPermissionsError, allPermissions);
+}
+
+function onCheckPermissions(statuses){
+    for(var permission in statuses){
+        var $permission = $('#permissions .'+permission),
+            status = statuses[permission];
+        $permission.find('.status').text(underscoreToSpace(status));
+        if(status == "GRANTED" || status == "DENIED_ALWAYS"){
+            $permission.find('button').hide();
+        }
+    }
+}
+
+function onCheckPermissionsError(error){
+    showAlert("Error checking permissions", "An error occurred while checking permissions: "+error);
+}
+
+function requestPermission(){
+    var permission = spaceToUnderscore($(this).parents('tr').find('.name').text());
+    $('#requesting').show();
+    cordova.plugins.diagnostic.requestRuntimePermission(onRequestPermission.bind(this, permission), onRequestPermissionError.bind(this, permission), permission);
+}
+
+function onRequestPermission(permission, status){
+    $('#requesting').hide();
+    console.log(permission+" is "+status);
+    checkPermissions();
+}
+
+function onRequestPermissionError(permission, error){
+    $('#requesting').hide();
+    showAlert("Error requesting permission", "Ane error occurred while request permission '"+permission+"': "+error);
+}
+
+$(document).on("deviceready", onDeviceReady);
