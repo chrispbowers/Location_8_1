@@ -14,7 +14,7 @@ $(document).on('pageinit', function() {
 });
 
 function onDeviceReady() {
-    
+    var permissions = cordova.plugins.permissions;
     permissions.requestPermission(permissions.ACCESS_COARSE_LOCATION, function() {
         alert("Permission granted");
     }, function() {
